@@ -1,0 +1,266 @@
+{
+  "bundled_content" : false,
+  "categories" : [
+    "Youth Justice",
+    "Policing",
+    "Domestic Violence",
+    "Organised Crime",
+    "Cybercrime",
+    "Child Protection",
+    "Sexual Violence",
+    "Sentencing",
+    "Parole",
+    "Prisons",
+    "Corrections",
+    "Immigration Detention",
+    "Human Rights",
+    "Courts",
+    "Criminal Law",
+    "Forensic Science",
+    "AI & Law",
+    "Evidence Law",
+    "International Criminal Law",
+    "Crime Prevention",
+    "Public Order",
+    "Surveillance",
+    "Victimology",
+    "State Crime",
+    "Institutional Harm"
+  ],
+  "concepts" : {
+    "items" : [
+      "Labelling Theory",
+      "Routine Activity Theory",
+      "Deterrence",
+      "Rehabilitation",
+      "Procedural Justice",
+      "Institutional Harm",
+      "State Crime",
+      "Crimes of the Powerful",
+      "Risk Society",
+      "Actuarial Justice",
+      "Situational Crime Prevention",
+      "Crime Displacement",
+      "Guardianship",
+      "Penal Populism",
+      "Crimmigration",
+      "Developmental Criminology"
+    ],
+    "label" : {
+      "en" : "Theories",
+      "zh" : "理论"
+    }
+  },
+  "feeds" : [
+    {
+      "category" : "news",
+      "id" : "abc-justin",
+      "kind" : "rss",
+      "name" : "ABC News",
+      "region" : "Australia",
+      "url" : "https://www.abc.net.au/news/feed/51120/rss.xml"
+    },
+    {
+      "category" : "news",
+      "id" : "guardian-au",
+      "kind" : "rss",
+      "name" : "The Guardian Australia",
+      "region" : "Australia",
+      "url" : "https://www.theguardian.com/australia-news/rss"
+    },
+    {
+      "category" : "news",
+      "id" : "guardian-dv",
+      "kind" : "rss",
+      "name" : "The Guardian · Domestic violence",
+      "region" : "International",
+      "topical" : true,
+      "url" : "https://www.theguardian.com/society/domestic-violence/rss"
+    },
+    {
+      "category" : "news",
+      "id" : "guardian-law",
+      "kind" : "rss",
+      "name" : "The Guardian · Law",
+      "region" : "International",
+      "url" : "https://www.theguardian.com/law/rss"
+    },
+    {
+      "category" : "news",
+      "id" : "conversation-au",
+      "kind" : "rss",
+      "name" : "The Conversation",
+      "region" : "Australia",
+      "url" : "https://theconversation.com/au/articles.atom"
+    },
+    {
+      "category" : "institution",
+      "id" : "qps",
+      "kind" : "rss",
+      "name" : "Queensland Police (myPolice)",
+      "region" : "Queensland",
+      "url" : "https://mypolice.qld.gov.au/feed/"
+    },
+    {
+      "category" : "institution",
+      "id" : "aic",
+      "kind" : "rss",
+      "name" : "Australian Institute of Criminology",
+      "region" : "Australia",
+      "topical" : true,
+      "url" : "https://www.aic.gov.au/rss.xml"
+    }
+  ],
+  "focus" : [
+    {
+      "color" : "orange",
+      "icon" : "scope",
+      "id" : "dfv",
+      "subtitle" : {
+        "en" : "Domestic, family and sexual violence: research, law and services",
+        "zh" : "家庭暴力、亲密伴侣暴力与性暴力：研究、法律与服务"
+      },
+      "term_groups" : [
+        [
+          "domestic violence",
+          "family violence",
+          "intimate partner",
+          "coercive control",
+          "sexual violence",
+          "家庭暴力",
+          "家暴",
+          "强制控制"
+        ]
+      ],
+      "themes" : [
+        {
+          "icon" : "building.columns",
+          "id" : "law_policy",
+          "label" : {
+            "en" : "Law & policy",
+            "zh" : "法律与政策"
+          }
+        },
+        {
+          "icon" : "chart.bar",
+          "id" : "prevalence",
+          "label" : {
+            "en" : "Prevalence & risk",
+            "zh" : "发生率与风险"
+          }
+        },
+        {
+          "icon" : "shield.checkered",
+          "id" : "prevention",
+          "label" : {
+            "en" : "Prevention & services",
+            "zh" : "预防与服务"
+          }
+        }
+      ],
+      "title" : {
+        "en" : "Family Violence Watch",
+        "zh" : "家庭暴力追踪"
+      }
+    }
+  ],
+  "id" : "criminology",
+  "live_terms" : [
+    "crime",
+    "criminal",
+    "court",
+    "police",
+    "prison",
+    "jail",
+    "sentenc",
+    "bail",
+    "remand",
+    "youth justice",
+    "detention",
+    "domestic violence",
+    "family violence",
+    "coercive control",
+    "intimate partner",
+    "sexual assault",
+    "rape",
+    "murder",
+    "homicide",
+    "manslaughter",
+    "inquest",
+    "coroner",
+    "offend",
+    "victim",
+    "charged",
+    "trial",
+    "jury",
+    "parole",
+    "watch-house",
+    "watch house",
+    "visa",
+    "deport",
+    "refugee",
+    "asylum",
+    "migrant",
+    "immigra",
+    "human rights",
+    "corrections",
+    "justice",
+    "legal aid",
+    "magistrate",
+    "supreme court",
+    "high court",
+    "royal commission",
+    "inquiry"
+  ],
+  "name" : {
+    "en" : "Criminology & Justice Brief",
+    "zh" : "犯罪学与司法晨报"
+  },
+  "reader" : {
+    "en" : "A reader interested in criminology and criminal justice in Australia and internationally.",
+    "zh" : "关注澳大利亚及国际犯罪学与刑事司法的读者。"
+  },
+  "scopes" : [
+    {
+      "label" : {
+        "en" : "Queensland",
+        "zh" : "昆士兰"
+      },
+      "regions" : [
+        "Queensland"
+      ]
+    },
+    {
+      "label" : {
+        "en" : "Australia",
+        "zh" : "澳大利亚"
+      },
+      "regions" : [
+        "Queensland",
+        "Australia",
+        "New South Wales",
+        "Victoria",
+        "Western Australia",
+        "South Australia",
+        "Tasmania",
+        "Northern Territory",
+        "ACT",
+        "Australian Capital Territory"
+      ]
+    },
+    {
+      "everything_else" : true,
+      "label" : {
+        "en" : "International",
+        "zh" : "国际"
+      },
+      "regions" : [
+
+      ]
+    }
+  ],
+  "sections" : {
+
+  },
+  "time_zone" : "Australia/Brisbane"
+}

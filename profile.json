@@ -1,0 +1,28 @@
+{
+  "bundled_content" : false,
+  "categories" : [
+
+  ],
+  "feeds" : [
+
+  ],
+  "id" : "blank",
+  "live_terms" : [
+
+  ],
+  "name" : {
+    "en" : "Morning Brief",
+    "zh" : "晨报"
+  },
+  "reader" : {
+    "en" : "Describe yourself and what you want to follow.",
+    "zh" : "写下你是谁、想关注什么。"
+  },
+  "scopes" : [
+
+  ],
+  "sections" : {
+    "academic" : false
+  },
+  "time_zone" : "Australia/Brisbane"
+}

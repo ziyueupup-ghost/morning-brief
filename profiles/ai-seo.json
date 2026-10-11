@@ -1,0 +1,226 @@
+{
+  "bundled_content" : false,
+  "categories" : [
+    "AI Models",
+    "AI Search",
+    "SEO",
+    "Generative Engine Optimisation",
+    "Google Search",
+    "Content Marketing",
+    "Brand",
+    "Startups & Funding",
+    "Regulation",
+    "Products & Tools",
+    "Analytics",
+    "Advertising"
+  ],
+  "concepts" : {
+    "items" : [
+      "E-E-A-T",
+      "Search Intent",
+      "Zero-click Search",
+      "AI Overviews",
+      "Answer Engines",
+      "Topical Authority",
+      "Structured Data"
+    ],
+    "label" : {
+      "en" : "Concepts",
+      "zh" : "概念"
+    }
+  },
+  "feeds" : [
+    {
+      "category" : "news",
+      "id" : "techcrunch-ai",
+      "name" : "TechCrunch · AI",
+      "region" : "United States",
+      "topical" : true,
+      "url" : "https://techcrunch.com/category/artificial-intelligence/feed/"
+    },
+    {
+      "category" : "news",
+      "id" : "verge-ai",
+      "name" : "The Verge · AI",
+      "region" : "United States",
+      "topical" : true,
+      "url" : "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+    },
+    {
+      "category" : "news",
+      "id" : "sel",
+      "name" : "Search Engine Land",
+      "region" : "International",
+      "topical" : true,
+      "url" : "https://news.google.com/rss/search?q=site:searchengineland.com+when:7d&hl=en-US&gl=US&ceid=US:en",
+      "via_google_news" : true
+    },
+    {
+      "category" : "news",
+      "id" : "sej",
+      "name" : "Search Engine Journal",
+      "region" : "International",
+      "topical" : true,
+      "url" : "https://news.google.com/rss/search?q=site:searchenginejournal.com+when:7d&hl=en-US&gl=US&ceid=US:en",
+      "via_google_news" : true
+    },
+    {
+      "category" : "institution",
+      "id" : "google-search-central",
+      "name" : "Google Search Central Blog",
+      "region" : "International",
+      "topical" : true,
+      "url" : "https://developers.google.com/search/blog/feed.xml"
+    },
+    {
+      "category" : "institution",
+      "id" : "openai-news",
+      "name" : "OpenAI News",
+      "region" : "United States",
+      "topical" : true,
+      "url" : "https://openai.com/news/rss.xml"
+    },
+    {
+      "category" : "news",
+      "id" : "gnews-ai-search",
+      "name" : "Google News · AI search & SEO",
+      "region" : "International",
+      "topical" : true,
+      "url" : "https://news.google.com/rss/search?q=%22AI+search%22+OR+%22AI+Overviews%22+OR+%22generative+engine+optimization%22+OR+SEO+when:7d&hl=en-US&gl=US&ceid=US:en",
+      "via_google_news" : true
+    }
+  ],
+  "focus" : [
+    {
+      "color" : "indigo",
+      "icon" : "sparkle.magnifyingglass",
+      "id" : "project",
+      "subtitle" : {
+        "en" : "AI software that improves brand SEO",
+        "zh" : "用 AI 提升品牌 SEO 的软件"
+      },
+      "term_groups" : [
+        [
+          "seo",
+          "search engine",
+          "ai overviews",
+          "ai overview",
+          "geo",
+          "generative engine",
+          "answer engine",
+          "ranking",
+          "serp",
+          "搜索引擎",
+          "搜索优化"
+        ],
+        [
+          "ai",
+          "llm",
+          "chatgpt",
+          "gemini",
+          "claude",
+          "perplexity",
+          "brand",
+          "人工智能",
+          "品牌"
+        ]
+      ],
+      "themes" : [
+        {
+          "icon" : "sparkle.magnifyingglass",
+          "id" : "ai_search",
+          "label" : {
+            "en" : "AI search",
+            "zh" : "AI 搜索"
+          }
+        },
+        {
+          "icon" : "chart.line.uptrend.xyaxis",
+          "id" : "seo",
+          "label" : {
+            "en" : "SEO & ranking",
+            "zh" : "SEO 与排名"
+          }
+        },
+        {
+          "icon" : "person.2",
+          "id" : "competitors",
+          "label" : {
+            "en" : "Competitors",
+            "zh" : "竞品动向"
+          }
+        }
+      ],
+      "title" : {
+        "en" : "Project Watch",
+        "zh" : "项目追踪"
+      }
+    }
+  ],
+  "id" : "ai-seo",
+  "live_terms" : [
+    "ai",
+    "artificial intelligence",
+    "llm",
+    "seo",
+    "search",
+    "google",
+    "openai",
+    "anthropic",
+    "gemini",
+    "chatgpt",
+    "brand",
+    "marketing"
+  ],
+  "name" : {
+    "en" : "AI & Search Brief",
+    "zh" : "AI 与搜索晨报"
+  },
+  "reader" : {
+    "en" : "A startup founder building AI software that improves brands' SEO. Needs AI industry news, AI search and SEO changes, and what competitors and platforms are doing. No academic coverage.",
+    "zh" : "正在创业的创始人，用 AI 做提升品牌 SEO 的软件。关注 AI 行业动态、AI 搜索与 SEO 的变化，以及竞品和平台的动向。不需要学术内容。"
+  },
+  "scopes" : [
+    {
+      "label" : {
+        "en" : "United States",
+        "zh" : "美国"
+      },
+      "regions" : [
+        "United States"
+      ]
+    },
+    {
+      "label" : {
+        "en" : "Asia-Pacific",
+        "zh" : "亚太"
+      },
+      "regions" : [
+        "Asia-Pacific",
+        "China",
+        "Australia",
+        "Japan",
+        "Singapore"
+      ]
+    },
+    {
+      "everything_else" : true,
+      "label" : {
+        "en" : "Rest of world",
+        "zh" : "其他地区"
+      },
+      "regions" : [
+        "United States",
+        "Asia-Pacific",
+        "China",
+        "Australia",
+        "Japan",
+        "Singapore"
+      ]
+    }
+  ],
+  "sections" : {
+    "academic" : false
+  },
+  "time_zone" : "Australia/Brisbane"
+}

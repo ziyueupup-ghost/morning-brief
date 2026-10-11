@@ -1,0 +1,154 @@
+{
+  "title": {
+    "en": "Data Watch",
+    "zh": "数据观察"
+  },
+  "updated_at": "2026-10-10T15:00:00+10:00",
+  "items": [
+    {
+      "id": "data-abs-pss-partner-2021-22",
+      "date": "2023-11-22",
+      "period": {
+        "en": "2021–22 (experiences since age 15)",
+        "zh": "2021–22 年（15 岁以来的经历）"
+      },
+      "region": "Australia",
+      "publisher": {
+        "en": "Australian Bureau of Statistics — Personal Safety Survey",
+        "zh": "澳大利亚统计局——个人安全调查"
+      },
+      "title": {
+        "en": "Partner violence and abuse in Australia",
+        "zh": "澳大利亚的伴侣暴力与虐待"
+      },
+      "headline_value": "1 in 5",
+      "headline_label": {
+        "en": "adults (4.2 million) have experienced partner violence or abuse since age 15",
+        "zh": "名成年人（420 万）自 15 岁以来经历过伴侣暴力或虐待"
+      },
+      "summary": {
+        "en": "Women are **about three times as likely** as men to have experienced partner violence (17% vs 5.5%).",
+        "zh": "女性经历伴侣暴力的可能性约为男性的**三倍**（17% 对 5.5%）。"
+      },
+      "charts": [
+        {
+          "kind": "grouped_bar",
+          "title": {
+            "en": "Experienced since age 15, by type",
+            "zh": "15 岁以来的经历（按类型）"
+          },
+          "unit": "%",
+          "points": [
+            {
+              "label": {
+                "en": "Partner violence",
+                "zh": "伴侣暴力"
+              },
+              "value": 17,
+              "group": {
+                "en": "Women",
+                "zh": "女性"
+              },
+              "highlight": true
+            },
+            {
+              "label": {
+                "en": "Partner violence",
+                "zh": "伴侣暴力"
+              },
+              "value": 5.5,
+              "group": {
+                "en": "Men",
+                "zh": "男性"
+              }
+            },
+            {
+              "label": {
+                "en": "Emotional abuse",
+                "zh": "情感虐待"
+              },
+              "value": 23,
+              "group": {
+                "en": "Women",
+                "zh": "女性"
+              }
+            },
+            {
+              "label": {
+                "en": "Emotional abuse",
+                "zh": "情感虐待"
+              },
+              "value": 14,
+              "group": {
+                "en": "Men",
+                "zh": "男性"
+              }
+            },
+            {
+              "label": {
+                "en": "Economic abuse",
+                "zh": "经济虐待"
+              },
+              "value": 16,
+              "group": {
+                "en": "Women",
+                "zh": "女性"
+              }
+            },
+            {
+              "label": {
+                "en": "Economic abuse",
+                "zh": "经济虐待"
+              },
+              "value": 7.8,
+              "group": {
+                "en": "Men",
+                "zh": "男性"
+              }
+            }
+          ]
+        }
+      ],
+      "meaning": [
+        {
+          "en": "==Emotional and economic abuse are more common than physical violence== — the core of coercive control.",
+          "zh": "==情感和经济虐待比身体暴力更常见==——这正是强制控制的核心。"
+        },
+        {
+          "en": "The gender gap holds for every type of abuse.",
+          "zh": "每种虐待类型都存在性别差距。"
+        }
+      ],
+      "caveats": [
+        {
+          "en": "Collected **March 2021 – May 2022, during COVID-19**.",
+          "zh": "调查于 **2021 年 3 月至 2022 年 5 月 COVID-19 期间**进行。"
+        },
+        {
+          "en": "A household survey in English: !!may under-count women with limited English or on temporary visas!!.",
+          "zh": "这是英文入户调查：!!可能低估英语有限或持暂住签证的女性!!。"
+        }
+      ],
+      "thesis_relevance": {
+        "en": "Why these numbers matter for the reader's focus columns — and what they can't show.",
+        "zh": "这些数字对读者的专栏为什么重要——以及它们不能说明什么。"
+      },
+      "themes": [
+        "prevalence",
+        "methods"
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "title": "Partner violence, 2021–22",
+          "publisher": "Australian Bureau of Statistics",
+          "url": "https://www.abs.gov.au/statistics/people/crime-and-justice/partner-violence/latest-release",
+          "type": "official",
+          "publication_date": "2023-11-22"
+        }
+      ],
+      "verified": true,
+      "accessed_at": "2026-10-10"
+    }
+  ]
+}

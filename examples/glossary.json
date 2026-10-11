@@ -1,0 +1,52 @@
+{
+ "entries": [
+  {
+   "id": "crimmigration",
+   "term": {
+    "en": "Crimmigration",
+    "zh": "移民刑事化"
+   },
+   "aliases": [
+    "crimmigration",
+    "移民刑事化"
+   ],
+   "definition": {
+    "en": "The merging of criminal law and immigration law, so that immigration control uses criminal-justice tools and criminal records drive immigration outcomes.",
+    "zh": "刑法与移民法的融合：移民管控使用刑事司法手段，而刑事记录又决定移民结果。"
+   },
+   "source": {
+    "id": "src",
+    "title": "Stumpf, J. (2006). The crimmigration crisis: Immigrants, crime, and sovereign power. American University Law Review, 56(2), 367–419.",
+    "publisher": "American University Law Review",
+    "type": "academic"
+   }
+  },
+  {
+   "id": "coercive-control",
+   "term": {
+    "en": "Coercive control",
+    "zh": "强制控制"
+   },
+   "aliases": [
+    "coercive control",
+    "强制控制",
+    "强制控制罪"
+   ],
+   "definition": {
+    "en": "A pattern of behaviour — isolation, monitoring, threats, controlling money or documents — that takes away a partner's freedom. In Queensland it has been a criminal offence (Criminal Code s 334C) since 26 May 2025.",
+    "zh": "一种剥夺伴侣自由的行为模式，如孤立、监视、威胁、控制金钱或证件。在昆士兰，自 2025 年 5 月 26 日起这已是刑事罪（《刑法典》第 334C 条）。"
+   },
+   "source": {
+    "id": "src",
+    "title": "Queensland Government — Coercive control",
+    "publisher": "Queensland Government",
+    "type": "government",
+    "url": "https://www.qld.gov.au/law/crime-and-police/types-of-crime/coercive-control"
+   },
+   "note": {
+    "en": "Concept developed by Stark, E. (2007). Coercive Control. Oxford University Press.",
+    "zh": "概念由 Stark（2007）《Coercive Control》系统提出。"
+   }
+  }
+ ]
+}

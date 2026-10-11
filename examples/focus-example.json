@@ -1,0 +1,33 @@
+{
+  "focus": "software",
+  "title": {"en": "Software Watch", "zh": "软件项目追踪"},
+  "updated_at": "2026-10-12T06:30:00+10:00",
+  "items": [
+    {
+      "id": "focus-example-2026-10-12-format-only",
+      "kind": "news",
+      "date": "2026-10-12",
+      "region": "International",
+      "themes": ["ai_search", "seo"],
+      "importance": "important",
+      "title": {"en": "FORMAT EXAMPLE — headline as you would write it", "zh": "格式示例——像这样写标题"},
+      "publication": {"en": "Publisher name", "zh": "发布方名称"},
+      "summary": {"en": "One or two short sentences with **bold** key terms and ==the core takeaway highlighted==.", "zh": "一两句简短的中文，**加粗**关键词，并==突出核心结论==。"},
+      "key_points": [
+        {"en": "Point one: what happened", "zh": "要点一：发生了什么"},
+        {"en": "Point two: !!risks or contested claims!! in red", "zh": "要点二：用红色标出!!风险或有争议的说法!!"},
+        {"en": "Point three: ++confirmed progress++ in green", "zh": "要点三：用绿色标出++已确认的进展++"}
+      ],
+      "findings": [{"en": "Lists stay lists, even with one entry.", "zh": "列表字段即使只有一条也要写成列表。"}],
+      "limitations": [{"en": "What the source can't tell us.", "zh": "这个来源无法说明的地方。"}],
+      "evidence_note": {"en": "Say if a claim is only from the company itself or a single report.", "zh": "如果说法只来自公司本身或单一报道，要写明。"},
+      "thesis_relevance": {"en": "Why this matters for this column.", "zh": "这一条为什么和这个专栏有关。"},
+      "research_ideas": [{"en": "What the reader could do with it.", "zh": "读者可以怎样利用它。"}],
+      "sources": [
+        {"id": "s1", "title": "Title exactly as published", "publisher": "Publisher", "url": "https://example.com/original-article", "type": "media", "publication_date": "2026-10-12"}
+      ],
+      "verified": true,
+      "accessed_at": "2026-10-12"
+    }
+  ]
+}

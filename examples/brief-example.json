@@ -1,0 +1,330 @@
+{
+ "schema_version": 2,
+ "date": "2026-10-10",
+ "edition": {
+  "en": "Saturday edition",
+  "zh": "周六版"
+ },
+ "is_sample": false,
+ "created_at": "2026-10-10T06:00:00+10:00",
+ "topics": [
+  {
+   "id": "topic-wallman-inquest",
+   "name": {
+    "en": "Marilyn Wallman Inquest",
+    "zh": "玛丽莲·沃尔曼死因调查"
+   },
+   "kind": "case",
+   "region": "Queensland",
+   "summary": {
+    "en": "Second coronial inquest into the 1980 disappearance of a 15-year-old near Mount Perry.",
+    "zh": "就 1980 年一名 15 岁少女在芒特佩里附近失踪一事进行的第二次死因调查。"
+   }
+  }
+ ],
+ "executive_brief": [
+  {
+   "id": "eb-visa",
+   "importance": "critical",
+   "target": "story/s-2026-10-10-visa-crackdown-dfv",
+   "text": {
+    "en": "Visa crackdown may **silence DFV survivors**",
+    "zh": "签证收紧或令**家暴幸存者噤声**"
+   }
+  },
+  {
+   "id": "eb-canada",
+   "importance": "important",
+   "icon": "🇨🇦",
+   "target": "quickscan/q-2026-10-10-canada-scc-ipv",
+   "text": {
+    "en": "Canada's top court sets **IPV sentencing** framework",
+    "zh": "加拿大最高法院确立**伴侣暴力量刑**框架"
+   }
+  }
+ ],
+ "top_stories": [
+  {
+   "id": "s-2026-10-10-visa-crackdown-dfv",
+   "verified": true,
+   "title": {
+    "en": "Migration crackdown puts DFV survivors on temporary visas at risk, experts warn",
+    "zh": "专家警告：移民收紧政策令暂住签证家暴幸存者处境更危险"
+   },
+   "short_title": {
+    "en": "Visas & DFV",
+    "zh": "签证与家暴"
+   },
+   "subtitle": {
+    "en": "Round-up: overstayer enforcement, the 'genuine relationship' test and the 2026 Blueprint for Reform",
+    "zh": "综述：逾期滞留执法、“真实关系”审查与《2026 改革蓝图》"
+   },
+   "published_at": "2026-10-10T06:10:00+10:00",
+   "region": "Australia",
+   "categories": [
+    "Domestic Violence",
+    "Human Rights",
+    "Institutional Harm"
+   ],
+   "importance": "critical",
+   "image_url": "https://assets.sbs.com.au/dims4/default/9242598/2147483647/strip/true/crop/4724x2657+1+276/resize/1280x720!/quality/90/?url=https%3A%2F%2Fsbs-au-brightspot.s3.ap-southeast-2.amazonaws.com%2Ff0%2F0f%2F78787f084f349e3d5f5a6476f1e9%2Fgettyimages-1327079963.jpg",
+   "image_credit": {
+    "en": "Image: Getty / Alvaro Medina Jurado, via SBS News",
+    "zh": "图片：Getty / Alvaro Medina Jurado，来自 SBS 新闻"
+   },
+   "image_source_url": "https://www.sbs.com.au/news/article/how-the-governments-new-immigration-policy-could-give-domestic-abusers-more-power/ua1syjh83",
+   "summary": {
+    "en": "A new crackdown on **visa overstayers** could let abusers use deportation threats as control, a criminologist warns; advocates say the **family violence provisions** still exclude many temporary visa holders.",
+    "zh": "犯罪学者警告，新的**逾期滞留**执法可能让施暴者把驱逐威胁当作控制手段；倡导者指出，**家暴条款**仍把许多暂住签证持有人排除在外。"
+   },
+   "key_points": [
+    {
+     "en": "Only ==22% of temporary visa holders== were confident about their visa rights",
+     "zh": "只有==22% 的暂住签证持有人==对自己的签证权利有把握"
+    },
+    {
+     "en": "Abusers can !!threaten to report a partner's visa status!! — women may stay silent",
+     "zh": "施暴者可能!!威胁举报伴侣的签证身份!!——女性因此不敢发声"
+    },
+    {
+     "en": "Survivors must prove the relationship was 'genuine' with documents !!often held by the abuser!!",
+     "zh": "幸存者须用文件证明关系“真实”，而文件!!常被施暴者掌控!!"
+    },
+    {
+     "en": "30+ organisations' **Blueprint for Reform 2026** asks for ++safety regardless of visa status++",
+     "zh": "30 多个机构联合发布的**《2026 改革蓝图》**呼吁++无论签证身份都能获得安全++"
+    }
+   ],
+   "background": {
+    "en": "Partner-visa holders can use the ^^family violence provisions^^ to stay if a relationship ends because of violence, but other temporary visa holders — students, workers, secondary applicants — usually cannot. A 2020 national survey found **one in three** migrant and refugee women had experienced domestic or family violence.",
+    "zh": "伴侣签证持有人若因暴力结束关系，可依据^^家暴条款^^留下，但其他暂住签证持有人（学生、工作签证、副申请人）通常不能。2020 年一项全国调查发现，**三分之一**的移民与难民女性经历过家庭暴力。"
+   },
+   "latest_development": {
+    "en": "On 18–19 September, Prof. **Marie Segrave** (University of Melbourne) warned the new overstayer policy has ==no safety net for victim-survivors==. On 22 September the National Advocacy Group launched its **Blueprint for Reform 2026**.",
+    "zh": "9 月 18–19 日，墨尔本大学 **Marie Segrave** 教授警告新的逾期滞留政策==没有为受害幸存者设置安全网==。9 月 22 日，全国倡导小组发布了**《2026 改革蓝图》**。"
+   },
+   "confirmed_facts": [
+    {
+     "en": "The Home Affairs Minister announced a crackdown on visa overstayers in September 2026.",
+     "zh": "内政部长于 2026 年 9 月宣布打击签证逾期滞留。"
+    },
+    {
+     "en": "The Blueprint for Reform 2026 is endorsed by **over 30** peak bodies, services and individuals.",
+     "zh": "《2026 改革蓝图》获得 **30 多个**行业机构、服务组织和个人支持。"
+    },
+    {
+     "en": "Family violence provisions apply only to **specific visa subclasses**.",
+     "zh": "家暴条款仅适用于**特定签证类别**。"
+    }
+   ],
+   "perspectives": [
+    {
+     "id": "p1",
+     "speaker": {
+      "en": "Marie Segrave",
+      "zh": "Marie Segrave"
+     },
+     "organisation": {
+      "en": "University of Melbourne",
+      "zh": "墨尔本大学"
+     },
+     "role": "academic",
+     "position": {
+      "en": "Concerned",
+      "zh": "担忧"
+     },
+     "summary": {
+      "en": "Enforcement without safeguards gives perpetrators **more power**.",
+      "zh": "缺乏保障的执法会让施暴者**掌握更多控制**。"
+     },
+     "source_id": "src1"
+    },
+    {
+     "id": "p2",
+     "speaker": {
+      "en": "Immigration lawyers",
+      "zh": "移民律师"
+     },
+     "organisation": {
+      "en": "IARC and Legal Aid ACT (ABC, 20 July)",
+      "zh": "移民咨询与权益中心、首都领地法律援助（ABC，7 月 20 日）"
+     },
+     "role": "legal_profession",
+     "position": {
+      "en": "Critical",
+      "zh": "批评"
+     },
+     "summary": {
+      "en": "Assess the violence first; ==presume the relationship was genuine==.",
+      "zh": "先评估暴力证据，==推定关系真实==。"
+     },
+     "source_id": "src2"
+    },
+    {
+     "id": "p3",
+     "speaker": {
+      "en": "Home Affairs Minister Tony Burke",
+      "zh": "内政部长 Tony Burke"
+     },
+     "role": "government",
+     "position": {
+      "en": "Defends record",
+      "zh": "为政绩辩护"
+     },
+     "summary": {
+      "en": "Says eligible visa classes were ++expanded++ and perpetrators' visas cancelled (to ABC, July).",
+      "zh": "表示已++扩大++适用签证类别，并注销施暴者签证（7 月对 ABC 表示）。"
+     },
+     "source_id": "src2"
+    }
+   ],
+   "why_it_matters": {
+    "en": "It shows how ==migration law can become a tool of coercive control== — and why service access for migrant women depends on visa settings.",
+    "zh": "这说明==移民法可能成为强制控制的工具==——也说明移民女性能否获得服务取决于签证政策。"
+   },
+   "critical_thinking": [
+    {
+     "id": "ct1",
+     "kind": "evidence_limitations",
+     "discussion": {
+      "en": "The 22% and one-in-three figures come from **non-representative surveys** — strong signals, not national prevalence rates.",
+      "zh": "22% 和三分之一这两个数字来自**非代表性调查**——是强烈的信号，但不是全国发生率。"
+     }
+    },
+    {
+     "id": "ct2",
+     "kind": "unintended_consequences",
+     "discussion": {
+      "en": "Enforcement aimed at overstayers may !!reduce reporting of violence!! — an effect hard to measure because it is about who stays silent.",
+      "zh": "针对逾期滞留者的执法可能!!减少暴力报案!!——这种影响很难测量，因为它关乎谁选择沉默。"
+     }
+    }
+   ],
+   "study_angle": {
+    "theories": [
+     "Crimmigration",
+     "Institutional Harm"
+    ],
+    "concepts": [
+     {
+      "en": "Systems abuse",
+      "zh": "系统性施暴"
+     },
+     {
+      "en": "Visa precarity",
+      "zh": "签证不稳定"
+     }
+    ],
+    "research_questions": [
+     {
+      "en": "How do visa conditions shape **when and where** migrant women seek help?",
+      "zh": "签证条件如何影响移民女性**何时、向谁**求助？"
+     }
+    ]
+   },
+   "sources": [
+    {
+     "id": "src1",
+     "title": "How the government's new migration crackdown could give domestic abusers more power",
+     "publisher": "SBS News",
+     "url": "https://www.sbs.com.au/news/article/how-the-governments-new-immigration-policy-could-give-domestic-abusers-more-power/ua1syjh83",
+     "type": "media",
+     "publication_date": "2026-09-19"
+    },
+    {
+     "id": "src2",
+     "title": "Migrant DFV victim-survivors made to prove genuineness of relationship",
+     "publisher": "ABC News",
+     "url": "https://www.abc.net.au/news/2026-07-20/dfv-survivors-made-to-prove-genuine-relationship/106869206",
+     "type": "media",
+     "publication_date": "2026-07-20"
+    },
+    {
+     "id": "src3",
+     "title": "Blueprint for Reform 2026 (PDF)",
+     "publisher": "National Advocacy Group on Women on Temporary Visas Experiencing Violence",
+     "url": "https://www.rails.org.au/sites/default/files/2026-08/BLUEPRINT%20FOR%20REFORM_2026.pdf",
+     "type": "official",
+     "publication_date": "2026-07-01"
+    }
+   ]
+  }
+ ],
+ "followups": [],
+ "academic_watch": [],
+ "quick_scan": [
+  {
+   "id": "q-2026-10-10-canada-scc-ipv",
+   "verified": true,
+   "importance": "important",
+   "headline": {
+    "en": "Canada's Supreme Court sets sentencing framework for Indigenous intimate partner violence cases",
+    "zh": "加拿大最高法院为原住民亲密伴侣暴力案件确立量刑框架"
+   },
+   "summary": {
+    "en": "In a **5–4** decision (Harry Arthur Cope), the Court upheld a reduced **three-year** sentence and set three steps that ==weigh protecting Indigenous women against over-incarceration==.",
+    "zh": "最高法院以 **5 比 4** 裁决（Harry Arthur Cope 案）维持减为 **三年** 的刑期，并确立三步框架，==在保护原住民女性与避免过度监禁之间取得平衡==。"
+   },
+   "category": "Sentencing",
+   "location": "Canada",
+   "why_noting": {
+    "en": "Directly relevant to **culture and IPV**: rejects the idea that protecting victims requires harsher sentences for minority offenders.",
+    "zh": "与**文化和亲密伴侣暴力**直接相关：否定了“保护受害者就必须对少数族裔犯罪人从重判罚”的观点。"
+   },
+   "source": {
+    "id": "src1",
+    "title": "Supreme Court sets sentencing framework for Indigenous intimate partner violence cases",
+    "publisher": "The Globe and Mail",
+    "url": "https://www.theglobeandmail.com/canada/article-supreme-court-sets-sentencing-framework-for-indigenous-intimate/",
+    "type": "media",
+    "publication_date": "2026-10-09"
+   }
+  },
+  {
+   "id": "q-2026-10-10-uk-safe-accommodation",
+   "verified": true,
+   "importance": "watching",
+   "headline": {
+    "en": "English councils struggle to house domestic abuse survivors",
+    "zh": "英格兰地方议会难以为家暴幸存者提供住房"
+   },
+   "summary": {
+    "en": "A Local Government Association survey of **49 councils** found **78%** cite a lack of suitable accommodation; provision is weaker for disabled and gender-diverse survivors.",
+    "zh": "地方政府协会对 **49 个议会**的调查显示，**78%** 认为缺乏合适住房；对残障和性别多元幸存者的安置更薄弱。"
+   },
+   "category": "Domestic Violence",
+   "location": "United Kingdom",
+   "why_noting": {
+    "en": "Housing is a **service-access barrier** in many countries — see Data Watch.",
+    "zh": "住房在许多国家都是**服务获取障碍**——详见数据观察。"
+   },
+   "source": {
+    "id": "src1",
+    "title": "Councils struggling to meet domestic abuse housing needs",
+    "publisher": "LGC",
+    "url": "https://lgcplus.com/services/housing/councils-struggle-to-meet-domestic-abuse-housing-needs-07-10-2026",
+    "type": "media",
+    "publication_date": "2026-10-07"
+   }
+  }
+ ],
+ "editor_analysis": {
+  "title": {
+   "en": "Visa settings shape who can seek help",
+   "zh": "签证政策决定谁能求助"
+  },
+  "theme": {
+   "en": "Service access",
+   "zh": "服务获取"
+  },
+  "paragraphs": [
+   {
+    "en": "Example paragraph: one idea per paragraph, ==highlight the takeaway==.",
+    "zh": "示例段落：每段一个观点，==突出核心结论==。"
+   }
+  ],
+  "related_ids": [
+   "s-2026-10-10-visa-crackdown-dfv"
+  ]
+ }
+}
