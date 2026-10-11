@@ -108,6 +108,41 @@ def profile_columns():
     cols = f if isinstance(f, list) else [f]
     return [c.get("id") or "focus" for c in cols if isinstance(c, dict)]
 
+def profile_sections():
+    try: return json.load(open(os.path.join(ROOT, "profile.json"))).get("sections") or {}
+    except Exception: return {}
+
+def tnorm(v):
+    """Term key for glossary matching: lower-case, no spaces / hyphens / dots (keeps Chinese)."""
+    return re.sub(r"[\s\-_·•.．'’]+", "", str(v).lower())
+
+def glossary_keys():
+    """Every id, term and alias already defined (repo glossary files, the example, and existing.json)."""
+    keys = set()
+    for f in glob.glob(os.path.join(ROOT, "glossary", "*.json")) + [os.path.join(ROOT, "examples", "glossary.json")]:
+        try: entries = json.load(open(f)).get("entries", [])
+        except Exception: continue
+        for e in entries:
+            keys.add(tnorm(e.get("id", "")))
+            t = e.get("term")
+            for v in ([t.get("en"), t.get("zh")] if isinstance(t, dict) else [t]) + list(e.get("aliases") or []):
+                if v: keys.add(tnorm(v))
+    try: keys |= {tnorm(i) for i in json.load(open(os.path.join(ROOT, "examples", "existing.json"))).get("glossary_ids", [])}
+    except Exception: pass
+    keys.discard("")
+    return keys
+
+def concept_terms(obj, lang="en"):
+    """All ^^term^^ markers in the English (or Chinese) text of a brief."""
+    out = []
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            if k == lang and isinstance(v, str): out += re.findall(r"\^\^(.+?)\^\^", v)
+            else: out += concept_terms(v, lang)
+    elif isinstance(obj, list):
+        for v in obj: out += concept_terms(v, lang)
+    return out
+
 def column_of(path, d):
     """research/focus-<id>-YYYY-MM-DD.json, or a root "focus" field."""
     if d.get("focus"): return d["focus"]
@@ -124,6 +159,23 @@ def validate_brief(d, path):
         err(path, "'editor_analysis' must be ONE object {title, theme, paragraphs, related_ids} — not a list; merge several analyses into one")
     elif isinstance(ea, dict) and not isinstance(ea.get("paragraphs", []), list):
         err(path, "'editor_analysis.paragraphs' must be a list")
+    lr = d.get("learning")
+    if lr is None:
+        if profile_sections().get("learning", True) is not False: warn(path, "no 'learning' section (Today I Learned & Takeaways) — add 2–3 knowledge items and 2–4 takeaways")
+    elif not isinstance(lr, dict) or not isinstance(lr.get("knowledge", []), list) or not isinstance(lr.get("takeaways", []), list):
+        err(path, "'learning' must be ONE object {knowledge: [...], takeaways: [...]}")
+    else:
+        for j, k in enumerate(lr.get("knowledge", [])):
+            need(k, f"learning.knowledge[{j}]", [("id", "str"), ("title", "text"), ("explanation", "text")])
+            check_sources(k, f"learning.knowledge[{j}]", required=False)
+        if not 1 <= len(lr.get("knowledge", [])) <= 4: warn(path, "learning.knowledge should have 2–3 items")
+        if not 1 <= len(lr.get("takeaways", [])) <= 5: warn(path, "learning.takeaways should have 2–4 items")
+        for j, t in enumerate(lr.get("takeaways", [])):
+            if not is_btext(t): err(path, f"learning.takeaways[{j}] must be {{en, zh}} text")
+    known_terms = glossary_keys()
+    missing = sorted({t for t in concept_terms(d) if tnorm(t) not in known_terms})
+    if missing:
+        err(path, f"^^terms^^ without a glossary entry: {', '.join(missing[:10])} — add them (with their Chinese form in aliases) to glossary/glossary-YYYY-MM-DD.json, validate it, then re-run this")
     ids = []
     for i, s in enumerate(d.get("top_stories", [])):
         p = f"top_stories[{i}]"
@@ -161,6 +213,10 @@ def validate_brief(d, path):
         if len(t) == 2 and t[1] not in ids: err(p, f"target {e.get('target')} not found in this brief")
         en = e.get("text", {}).get("en", "") if isinstance(e.get("text"), dict) else e.get("text", "")
         if len(re.sub(r"[*=!+^]", "", en).split()) > 12: warn(p, "executive_brief should be one short sentence (≤ 10 words)")
+    if isinstance(lr, dict):
+        for j, k in enumerate(lr.get("knowledge", []) if isinstance(lr.get("knowledge"), list) else []):
+            for rid in k.get("related_ids", []) or []:
+                if rid not in ids: err(f"learning.knowledge[{j}]", f"related id {rid} not found in this brief")
     return ids
 
 def main():

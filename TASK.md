@@ -5,6 +5,22 @@ produce **one Daily Brief** and, when there is genuinely new material, update th
 **focus column** and **Data Watch**. The reader's Mac app downloads new files from this
 repository every 30 minutes.
 
+## 0a. What kind of run is this? (decide first, it takes one minute)
+
+This task runs every morning **and** whenever someone pushes to this repository (for example when the
+reader edits their columns in the app, which commits `profile.json`). Decide the mode before anything else:
+
+```bash
+TODAY=$(TZ=<profile time_zone, default Australia/Brisbane> date +%F)
+git log -1 --name-only --format='%H %an %s'      # what the latest commit changed
+```
+
+1. **Morning brief** — `briefs/$TODAY.json` does not exist → do the full task below (sections 0–8).
+2. **Profile update** — the brief for today exists **and** the latest commit changed `profile.json`
+   (and wasn't your own "Brief …" / "Profile update …" commit) → follow **section 9** only.
+3. **Nothing to do** — anything else (e.g. the latest commit is a brief you pushed yourself) → stop
+   immediately without changing anything. Reply "No profile change — nothing to do."
+
 ## 0. Read the profile first
 
 `profile.json` (repository root) says who the reader is and what to cover. Read it before anything else:
@@ -16,7 +32,7 @@ repository every 30 minutes.
 | `scopes` | Priority regions, in order (first = most important). `everything_else: true` means "the rest of the world". Empty → no regional priority. |
 | `categories` | The category tags to use on items (`categories` on stories, `category` on quick scan). Add a new one only when nothing fits. |
 | `concepts` | Ideas / frameworks for `study_angle.theories` (its `label` says what they are called, e.g. "Theories" or "Concepts"). |
-| `sections` | Which sections the app shows. When `academic` is `false`, leave `academic_watch` empty and don't research academic events. When `followups` is `false`, leave `followups` empty. When `data` is `false`, skip Data Watch. When `focus` is `false` or there is no `focus`, skip the focus column. |
+| `sections` | Which sections the app shows. When `academic` is `false`, leave `academic_watch` empty and don't research academic events. When `followups` is `false`, leave `followups` empty. When `data` is `false`, skip Data Watch. When `focus` is `false` or there is no `focus`, skip the focus column. When `learning` is `false`, leave out `learning`. |
 | `focus` | The reader's personal column(s). Either one object or a **list of columns**, each with `id`, `title`, `subtitle` (what it tracks), `term_groups` (keywords: an item belongs when it matches a term from each group) and optional `themes` (`id` + `label`, used as theme tags). Give these topics priority everywhere; research each column separately. |
 | `feeds` | RSS / Atom feeds to scan (`kind: "pubmed"` → the `url` is a PubMed query). |
 | `live_terms` | Words that make a general news item relevant. |
@@ -39,7 +55,7 @@ If `profile.json` is missing or invalid, stop and say so — don't guess the rea
 
 Time zone: if the reader's `profile.json` has a `time_zone` (e.g. "America/Los_Angeles"), use it for today's date; otherwise use Australia/Brisbane.
 
-**If `briefs/YYYY-MM-DD.json` for today already exists, stop** — never overwrite a brief.
+**Never overwrite an existing brief.** If `briefs/YYYY-MM-DD.json` for today already exists, see section 0a (profile update or stop).
 
 ## 2. Gather (about 20–40 minutes of research)
 
@@ -61,7 +77,7 @@ Time zone: if the reader's `profile.json` has a `time_zone` (e.g. "America/Los_A
 
 Root fields: `schema_version: 2`, `date` ("YYYY-MM-DD"), `edition` (e.g. {"en":"Sunday edition","zh":"周日版"}),
 `is_sample: false`, `created_at` (ISO 8601 with the reader's UTC offset), `topics`, `executive_brief`, `top_stories`,
-`followups`, `academic_watch`, `quick_scan`, `editor_analysis`.
+`followups`, `academic_watch`, `quick_scan`, `editor_analysis` (**one object**, not a list), `learning`.
 
 Size: **3–6 top stories**, 0–3 follow-ups, 2–5 academic items (0 when academic is off), 4–8 quick scan.
 Quality over quantity. At least **one item from outside the first scope** and, whenever anything exists,
@@ -88,6 +104,26 @@ Quality over quantity. At least **one item from outside the first scope** and, w
 - Research and data: never present **association as causation**; say so in `evidence_note`.
 - `region`: a region tag that matches the profile's `scopes` where possible.
 - Each story and quick-scan item you verified: `"verified": true`.
+
+### Today I Learned & Takeaways (`learning`) — every day unless `sections.learning` is `false`
+A short learning section for this reader, built from today's items:
+```json
+"learning": {
+  "knowledge": [
+    {"id": "l-YYYY-MM-DD-<slug>", "title": {"en": "Concept in a few words", "zh": "…"},
+     "explanation": {"en": "One or two short sentences a non-expert understands.", "zh": "…"},
+     "example": {"en": "How it showed up in today's news.", "zh": "…"},
+     "related_ids": ["s-YYYY-MM-DD-…"],
+     "sources": [{"id": "s1", "title": "…", "publisher": "…", "url": "https://…", "type": "official"}]}
+  ],
+  "takeaways": [{"en": "One practical or memorable lesson.", "zh": "…"}]
+}
+```
+- **2–3 `knowledge` items**: a concept, rule, mechanism or fact the reader can learn from today's stories (not a
+  summary of the story). Prefer things that help with the reader's `focus` columns. Each has a reliable source
+  (official, legislation, academic or a reference work) and `related_ids` pointing at items in this brief.
+- **2–4 `takeaways`**: one sentence each — what to remember, question or do differently. No new facts here.
+- Same style rules: short, bilingual, emphasis markers allowed.
 
 ### Ids
 Unique and dated: stories `s-YYYY-MM-DD-<slug>`, follow-ups `f-…`, academic `a-…`, quick scan `q-…`.
@@ -129,18 +165,41 @@ Follow `examples/data-watch.json`: headline_value, headline_label, summary, `cha
 horizontal_bar / line / comparison; points with label, value), `meaning`, `caveats`, `thesis_relevance`,
 sources, `verified: true`. Numbers must be copied from the source you opened; if you derive a number, say so in the chart `note`.
 
-## 6. Glossary (`glossary/glossary-YYYY-MM-DD.json`) — optional
+## 6. Glossary (`glossary/glossary-YYYY-MM-DD.json`) — required for new terms
 
-For new terms you mark with `^^…^^`: `{"entries": [{"id", "term", "aliases", "definition", "source"}]}` —
-short neutral definition and a real source. Don't duplicate existing ids or terms.
+**Every term you mark with `^^…^^` must have a glossary entry**, otherwise the app shows it without the
+tap-for-definition footnote. Before writing, list today's `^^terms^^`; skip those already defined (in `glossary/`,
+`examples/glossary.json`, or `examples/existing.json → glossary_ids`); write the rest to today's glossary file:
+`{"entries": [{"id": "kebab-case-id", "term": {"en": "Term", "zh": "术语"}, "aliases": ["other spellings", "中文写法", "abbrev"],
+"definition": {"en": "…", "zh": "…"}, "source": {"title": "…", "publisher": "…", "url": "https://…", "type": "official"}}]}`.
+Put **both the English and Chinese forms** of the term (exactly as they appear inside `^^…^^`) in `term` or `aliases`.
+Short neutral definition, real source (statute, official page, standard reference or the canonical academic work).
+Write the glossary file **before** validating the brief — the validator checks that every `^^term^^` is covered.
 
 ## 7. Validate, index, commit
 
 1. Write each file into its folder.
-2. Validate each file (`python3 tools/validate.py brief briefs/YYYY-MM-DD.json`, and `research` (each focus file) / `data` /
+2. Validate each file — the glossary first, then the brief (`python3 tools/validate.py glossary …`, `python3 tools/validate.py brief briefs/YYYY-MM-DD.json`, and `research` (each focus file) / `data` /
    `glossary` for the others). Fix every ✗ and re-run until it prints OK. Treat ⚠︎ as style issues to fix.
 3. `python3 tools/build_index.py`
 4. `git add -A && git commit -m "Brief YYYY-MM-DD" && git push` (if rejected: `git pull --rebase`, push again; never force-push).
+
+## 9. Profile update mode (the reader changed `profile.json`)
+
+The reader just edited their profile in the app and wants the change reflected **today**, not tomorrow.
+
+1. See what changed: `git diff HEAD~1 -- profile.json`.
+2. For every focus column that is **new**, or whose `title`, `subtitle`, `term_groups` or `themes` changed:
+   research it the same way as section 2 (last 7 days; journals last 30 days), open and verify every source,
+   and write `research/focus-<id>-$TODAY-update.json` with `"focus": "<id>"` at the root (same item format as section 4).
+   Tag items with the column's current theme ids. Skip anything already in `research/` or `examples/existing.json`.
+3. If today's brief has items that now clearly belong to a changed column, you may add a short
+   `research/focus-<id>-$TODAY-update.json` entry pointing to them — but **never rewrite or delete** `briefs/$TODAY.json`.
+4. A column that was **removed**: do nothing (its old files stay).
+5. Changes to `name`, `scopes`, `categories`, `feeds`, `sections`: nothing to backfill — they apply from the next morning brief.
+6. Validate (`python3 tools/validate.py research …`), `python3 tools/build_index.py`, then
+   `git add -A && git commit -m "Profile update $TODAY" && git push`. If nothing new was found, commit nothing.
+7. Reply with a short summary: which columns were updated and how many items were added.
 
 ## 8. Finish
 
