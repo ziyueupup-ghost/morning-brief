@@ -10,10 +10,18 @@ repository every 30 minutes.
 This task runs every morning **and** whenever someone pushes to this repository (for example when the
 reader edits their columns in the app, which commits `profile.json`). Decide the mode before anything else:
 
+**Always run this first, exactly as written.** The cloud machine's clock is UTC, so plain `date` (or
+your own guess) is still *yesterday* for a reader in Australia or Asia during their morning.
+"Today" is always the date in the reader's time zone:
+
 ```bash
-TODAY=$(TZ=<profile time_zone, default Australia/Brisbane> date +%F)
+TZ_READER=$(python3 -c "import json;print(json.load(open('profile.json')).get('time_zone') or 'Australia/Brisbane')" 2>/dev/null || echo Australia/Brisbane)
+TODAY=$(TZ="$TZ_READER" date +%F); echo "Reader's today: $TODAY ($TZ_READER)"
+ls briefs/$TODAY.json 2>/dev/null || echo "no brief for $TODAY yet"
 git log -1 --name-only --format='%H %an %s'      # what the latest commit changed
 ```
+
+Use `$TODAY` for every date in this task (file names, ids, `date`, `created_at`).
 
 1. **Morning brief** — `briefs/$TODAY.json` does not exist → do the full task below (sections 0–8).
 2. **Profile update** — the brief for today exists **and** the latest commit changed `profile.json`
