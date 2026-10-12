@@ -182,6 +182,17 @@ def validate_brief(d, path):
         need(s, p, [("id", "str"), ("title", "text"), ("published_at", "date"), ("region", "str"), ("importance", "imp"), ("summary", "text")])
         texts_bilingual(s, p, ["title", "summary", "subtitle", "why_it_matters", "background", "latest_development"])
         if len(s.get("key_points", [])) < 3: warn(p, "fewer than 3 key_points")
+        for f, lo in (("background_points", 3), ("analysis", 3), ("impacts", 3), ("watch_next", 2)):
+            v = s.get(f)
+            if v is None or v == []:
+                warn(p, f"no '{f}' — add {lo}+ bullets so the reader understands the story without the article")
+            elif not isinstance(v, list):
+                err(p, f"'{f}' must be a LIST of bullets")
+            else:
+                if len(v) < lo: warn(p, f"only {len(v)} '{f}' bullet(s); aim for {lo}+")
+                for j, b in enumerate(v):
+                    t = b.get("text") if f == "impacts" and isinstance(b, dict) and "text" in b else b
+                    if not bilingual(t): err(p, f"{f}[{j}] must be bilingual {{en, zh}}" + (" (impacts: {who, text})" if f == "impacts" else ""))
         for f in ("key_points", "categories", "confirmed_facts", "allegations", "perspectives", "critical_thinking", "timeline", "sources"):
             if f in s and not isinstance(s[f], list): err(p, f"'{f}' must be a list")
         check_sources(s, p); check_image(s, p)

@@ -18,7 +18,10 @@ git log -1 --name-only --format='%H %an %s'      # what the latest commit change
 1. **Morning brief** — `briefs/$TODAY.json` does not exist → do the full task below (sections 0–8).
 2. **Profile update** — the brief for today exists **and** the latest commit changed `profile.json`
    (and wasn't your own "Brief …" / "Profile update …" commit) → follow **section 9** only.
-3. **Nothing to do** — anything else (e.g. the latest commit is a brief you pushed yourself) → stop
+3. **Task update** — the brief for today exists **and** the latest commit message starts with
+   "Update task files from the 晨报 template" → follow **section 10** only (bring today's brief up to
+   the new rules right away, so the reader doesn't wait until tomorrow).
+4. **Nothing to do** — anything else (e.g. the latest commit is a brief you pushed yourself) → stop
    immediately without changing anything. Reply "No profile change — nothing to do."
 
 ## 0. Read the profile first
@@ -79,15 +82,35 @@ Root fields: `schema_version: 2`, `date` ("YYYY-MM-DD"), `edition` (e.g. {"en":"
 `is_sample: false`, `created_at` (ISO 8601 with the reader's UTC offset), `topics`, `executive_brief`, `top_stories`,
 `followups`, `academic_watch`, `quick_scan`, `editor_analysis` (**one object**, not a list), `learning`.
 
-Size: **3–6 top stories**, 0–3 follow-ups, 2–5 academic items (0 when academic is off), 4–8 quick scan.
+Size: **3–5 top stories** (depth beats count), 0–3 follow-ups, 2–5 academic items (0 when academic is off), 4–8 quick scan.
 Quality over quantity. At least **one item from outside the first scope** and, whenever anything exists,
 **one item for each focus column**.
 
 ### Every text field is bilingual
-`{"en": "...", "zh": "..."}` — natural Simplified Chinese, not word-for-word. Keep it short.
+`{"en": "...", "zh": "..."}` — natural Simplified Chinese, not word-for-word. Keep each sentence short;
+get depth from **more bullets**, not longer ones.
+
+### Depth: the reader should not need to open the article
+The brief replaces reading the news, so every top story must explain **what happened, why, and what it
+changes** — as bullet lists, never paragraphs. Each bullet is one self-contained sentence with specifics
+(names, numbers, dates, the law or policy by name). No filler ("this is significant", "remains to be seen").
+
+| field | bullets | what goes in it |
+|---|---|---|
+| `key_points` | 3–5 | the news itself: who did what, the key numbers |
+| `background_points` | 3–5 | what led here: earlier events with dates, the law/policy involved and what it says, scale (stats with year and source), who the actors are |
+| `latest_development` | 1 short text | the newest step only |
+| `analysis` | 3–4 | why it is happening and what is really at stake: causes and drivers, competing interests, how it fits a wider trend, what the evidence does and doesn't show |
+| `impacts` | 3–5 | `{"who": {en,zh}, "text": {en,zh}}` — effects on named groups (e.g. victim-survivors, police, courts, services, migrants, government budget), short and longer term; mark uncertain effects as likely/possible |
+| `watch_next` | 2–3 | concrete next steps: dates, votes, hearings, reports, deadlines, what would change the picture |
+| `why_it_matters` | 1 sentence | the single framing line |
+
+Follow-ups use the same idea: `key_points` (2–4 bullets: what changed since last time), `analysis` (2–3),
+`impacts` (2–4), `watch_next` (1–3), in addition to `previous_summary` / `new_development`.
+Keep `background` (one-sentence version) too, for older app versions.
 
 ### Style rules
-- **No long paragraphs.** Short sentences. Each story has **3–4 `key_points`**.
+- **No long paragraphs.** Short sentences in bullets (see the table above).
 - Inline emphasis inside text: `**bold**` key terms · `==highlight==` the core takeaway ·
   `!!red!!` risks / harms / contested points · `++green++` confirmed progress · `^^blue^^` concepts
   and technical terms (these become glossary footnotes when an entry exists).
@@ -200,6 +223,19 @@ The reader just edited their profile in the app and wants the change reflected *
 6. Validate (`python3 tools/validate.py research …`), `python3 tools/build_index.py`, then
    `git add -A && git commit -m "Profile update $TODAY" && git push`. If nothing new was found, commit nothing.
 7. Reply with a short summary: which columns were updated and how many items were added.
+
+## 10. Task update mode (the template's rules changed)
+
+Bring **today's** brief up to the current section 3 rules without starting over:
+1. Read `briefs/$TODAY.json`. Keep every id, the item order and all existing fields.
+2. For each top story and follow-up, add whatever the rules now require and the item lacks — e.g.
+   `background_points`, `analysis`, `impacts`, `watch_next`, follow-up `key_points`. Re-open the item's
+   sources (and search for one or two more reliable ones) so the new bullets are accurate and specific.
+   Don't change facts you can't re-check; keep facts vs claims separate as always.
+3. Add any other newly required section that is missing (e.g. `learning`), and glossary entries for new terms.
+4. Set `updated_at` (ISO 8601, reader's offset), run `python3 tools/validate.py brief briefs/$TODAY.json` until it prints OK, then
+   `python3 tools/build_index.py`, commit "Brief upgrade $TODAY" and push.
+5. Reply with one line saying what was added.
 
 ## 8. Finish
 

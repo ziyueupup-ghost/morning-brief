@@ -84,7 +84,7 @@
    - **Schedule**：每天早上你想要的时间（例如每天 6:00）
    - **Prompt**：复制下面这段
      ```
-     Read TASK.md and profile.json in this repository and follow TASK.md exactly to write today's Morning Brief. Verify every source you use, write bilingual {en, zh} text, use real images only, never log in to subscription sites, validate with tools/validate.py, rebuild index.json, then commit and push to main. Finish with a short summary.
+     Read TASK.md and profile.json in this repository and follow TASK.md exactly. First decide the mode with TASK.md section 0a (morning brief / profile update / task update / nothing to do) — TASK.md is the authority on modes. Verify every source you use, write bilingual {en, zh} text, use real images only, never log in to subscription sites, validate with tools/validate.py, rebuild index.json, then commit and push to main. Finish with a short summary.
      ```
    - **Model**：Claude Sonnet（默认即可）
 3. **放开网络**：创建后打开任意一次运行，点顶部标题旁的 **⌄ ▸ Edit cloud environment**，把 **Network access** 改成 **Full**，保存。（默认的 Trusted 会拦住新闻网站，晨报会生成失败。）
@@ -119,13 +119,21 @@
    - **Repository access** 选 **Only select repositories**，勾上**你自己的**晨报仓库（不是模板 `morning-brief`，名字很像，别选错）；
    - **Permissions** ▸ **Repositories** 标签 ▸ **Add permissions** ▸ 勾 **Contents**：只同步选 **Read-only**；还想在 App 里改设置、一键更新任务文件，选 **Read and write**；
    - **Expiration** 请选下拉里的固定选项，例如 **90 days**。不要选 Custom：自定义日期有时没被表单接收，点 Generate token 会毫无反应，页面也不提示。然后 **Generate token**，复制令牌（只显示一次）。
-3. 晨报 ▸ 设置 ▸ 同步 ▸ **私有仓库访问**，粘贴令牌，点保存。令牌只存在这台 Mac 的钥匙串里。
+3. 晨报 ▸ 设置 ▸ 同步 ▸ **私有仓库访问**，粘贴令牌，点保存。令牌只保存在这台 Mac 本地（不会同步到别处）。
 
 云端定时任务不受影响（它通过 Claude GitHub App 访问仓库）。令牌过期后 App 会提示 401，重新生成一个即可。需要 App 1.3 或更新版本。
 
 ## 每日新知与 Takeaway
 
 晨报顶部「今日速览」下面有一栏「💡 每日新知与 Takeaway」：每天 2–3 个从当天新闻里能学到的概念或事实（简短解释、举例、来源），加上 2–4 条值得记住的 takeaway。不想要就在 `profile.json` 的 `sections` 里写 `"learning": false`。晨报里的蓝色 ^^术语^^ 都会有解释弹窗（云端任务必须为每个新术语写词条）。
+
+## 每条新闻：背景、分析和影响
+
+每条头条都用要点（bullet points）写清楚，不用再去看原文：**要点**、**背景**（来龙去脉、相关法律政策、数字）、**深度分析**（为什么发生、真正的争议在哪）、**影响**（对哪些人群有什么影响，短期和长期）、**接下来关注**（投票、听证、截止日期）。持续跟进的事件也有「这次变了什么」、分析和影响。需要 App 1.6 和最新的 `TASK.md`。
+
+## 桌面小组件
+
+右键桌面 ▸ **编辑小组件** ▸ 搜索「晨报」，有小、中、大三种：小号显示头条和一句「为什么重要」；中号加上今日 Takeaway；大号显示 4 条新闻（每条附一句分析）、Takeaway、你的专栏最新条目、未读数和连续阅读天数。点任意一条直接打开 App。
 
 ## 可信度提醒
 
@@ -134,7 +142,7 @@ App 会给每个来源和新闻链接加一个可信度标签（可信度高 / �
 ## 已经建好仓库的老用户：怎么升级
 
 1. App 里点「晨报 ▸ Check for Updates… 检查更新」，安装最新版。
-2. 在 App 里点 **设置 ▸ 同步 ▸ 云端任务文件 ▸「从模板更新」**，App 会把这里最新的 `TASK.md` 和检查脚本复制到你的仓库（需要 Contents 为 **Read and write** 的令牌，见下方「访问令牌」）。没有读写令牌的话，也可以手动复制：打开这里的文件 ▸ 复制全部内容 ▸ 在你的仓库里编辑同名文件 ▸ 粘贴 ▸ Commit。
+2. 在 App 里点 **设置 ▸ 同步 ▸ 云端任务文件 ▸「从模板更新」**，App 会把这里最新的 `TASK.md` 和检查脚本（一次提交）复制到你的仓库。加了 GitHub push 触发器的话，Claude 会马上按新规则重写当天的晨报，几分钟后就能看到。**升级到 1.6 时请顺便把定时任务的 Prompt 换成上面「第 4 步」里的新版本**（旧 Prompt 只认三种模式，会跳过「按新规则更新今天的晨报」）（需要 Contents 为 **Read and write** 的令牌，见下方「访问令牌」）。没有读写令牌的话，也可以手动复制：打开这里的文件 ▸ 复制全部内容 ▸ 在你的仓库里编辑同名文件 ▸ 粘贴 ▸ Commit。
 3. 想要多个专栏，就按上面「多个专栏」改你的 `profile.json`。
 4. **改成多个专栏后，处理旧的专栏文件。** 旧版本生成的 `research/focus-日期.json` 没写属于哪个专栏，App 会先把它们放在第一个专栏，并在 设置 ▸ 主题 里显示 ⚠︎。要归到正确的专栏：在这些文件最外层加一行 `"focus": "专栏id",`（例如 `"focus": "software",`），或者把文件改名为 `focus-专栏id-日期.json`。改完运行一次 `python3 tools/build_index.py`（或者让 Claude 帮你改，它会顺便重建索引）。
 
