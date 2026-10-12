@@ -148,6 +148,14 @@ A short learning section for this reader, built from today's items:
 - **2–4 `takeaways`**: one sentence each — what to remember, question or do differently. No new facts here.
 - Same style rules: short, bilingual, emphasis markers allowed.
 
+### Academic items must be checkable
+Every paper, report or publication in `academic_watch` (kinds `paper`, `report`, `aic_publication`,
+`university_research`) needs **`doi`** (bare, e.g. `10.1177/15248380231162971`) **or `url`** to the publisher /
+journal page — both when available — plus `authors` (list), `publication` (journal) or `institution` (publisher),
+and `publication_date`. Open the DOI or URL and confirm it is the same work before writing about it.
+If you can't find a DOI or a working link, **leave the item out** — never describe a paper the reader can't look up.
+The same applies to papers in focus-column files (`doi` or `url` on every item).
+
 ### Ids
 Unique and dated: stories `s-YYYY-MM-DD-<slug>`, follow-ups `f-…`, academic `a-…`, quick scan `q-…`.
 Never reuse an id from an earlier brief.
@@ -194,7 +202,8 @@ sources, `verified: true`. Numbers must be copied from the source you opened; if
 tap-for-definition footnote. Before writing, list today's `^^terms^^`; skip those already defined (in `glossary/`,
 `examples/glossary.json`, or `examples/existing.json → glossary_ids`); write the rest to today's glossary file:
 `{"entries": [{"id": "kebab-case-id", "term": {"en": "Term", "zh": "术语"}, "aliases": ["other spellings", "中文写法", "abbrev"],
-"definition": {"en": "…", "zh": "…"}, "source": {"title": "…", "publisher": "…", "url": "https://…", "type": "official"}}]}`.
+"definition": {"en": "…", "zh": "…"}, "source": {"id": "src", "title": "…", "publisher": "…", "url": "https://…", "type": "official"}}]}`.
+Every `source` needs `id`, `title`, `publisher` and `type` (same as `examples/glossary.json`).
 Put **both the English and Chinese forms** of the term (exactly as they appear inside `^^…^^`) in `term` or `aliases`.
 Short neutral definition, real source (statute, official page, standard reference or the canonical academic work).
 Write the glossary file **before** validating the brief — the validator checks that every `^^term^^` is covered.

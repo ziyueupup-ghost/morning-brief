@@ -210,6 +210,17 @@ def validate_brief(d, path):
     for i, a in enumerate(d.get("academic_watch", [])):
         p = f"academic_watch[{i}]"
         need(a, p, [("id", "str"), ("title", "text"), ("kind", "str"), ("region", "str"), ("summary", "text")])
+        # Publications must be checkable: a DOI or a working link, plus who wrote it and where it appeared.
+        if a.get("kind") in ("paper", "report", "aic_publication", "university_research"):
+            doi, url = (a.get("doi") or "").strip(), (a.get("url") or "").strip()
+            if not doi and not url:
+                err(p, "a paper/report needs 'doi' (e.g. 10.1177/15248380231162971) or 'url' to the publisher page — find it, or drop the item")
+            if doi and not re.match(r"^10\.\d{4,9}/\S+$", doi.replace("https://doi.org/", "")):
+                err(p, f"'doi' doesn't look like a DOI: {doi}")
+            if url and not url_ok(url): err(p, f"bad url {url}")
+            if not a.get("authors"): err(p, "a paper/report needs 'authors' (list; an organisation is fine for reports)")
+            if not (a.get("publication") or a.get("institution")): err(p, "a paper/report needs 'publication' (journal) or 'institution' (publisher)")
+            if not a.get("publication_date"): warn(p, "no 'publication_date'")
         ids.append(a.get("id"))
     for i, q in enumerate(d.get("quick_scan", [])):
         p = f"quick_scan[{i}]"
@@ -278,6 +289,7 @@ def main():
                 p = f"entries[{i}]"
                 need(e, p, [("id", "str"), ("term", "text"), ("definition", "text")])
                 if not isinstance(e.get("source"), dict): err(p, "missing source")
+                else: check_sources({"sources": [e["source"]]}, p)   # needs id, title, publisher, type
                 ids.append(e.get("id"))
         same_file = ("file", os.path.abspath(path)) in known
         for i in ids:
