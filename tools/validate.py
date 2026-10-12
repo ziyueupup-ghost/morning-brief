@@ -36,6 +36,27 @@ def date_ok(v):
 
 def url_ok(v): return isinstance(v, str) and re.match(r"^https?://[^\s]+\.[^\s]+", v) is not None
 
+# Fields that hold ONE {en, zh} text (never a list), and fields that hold a date.
+SINGLE_TEXT = {"summary", "methodology", "sample", "evidence_note", "thesis_relevance", "relevance", "research_question",
+               "essay_use", "why_it_matters", "background", "latest_development", "subtitle", "previous_summary",
+               "new_development", "assessment_note", "definition", "explanation", "example"}
+DATE_KEYS = {"date", "publication_date", "published_at", "created_at", "updated_at", "accessed_at", "start_date",
+             "end_date", "registration_deadline", "call_for_papers_deadline", "release_date"}
+
+def check_formats(v, path):
+    """Anywhere in a file: dates must be full dates, single texts must not be lists."""
+    if isinstance(v, dict):
+        for k, x in v.items():
+            p = f"{path}.{k}" if path else k
+            if k in DATE_KEYS and isinstance(x, str) and not date_ok(x):
+                hint = " — a month or year alone isn't a date: use the first day (e.g. 2026-11-01)" if re.match(r"^\d{4}(-\d{2})?$", x) else ""
+                err(p, f"'{x}' isn't a date (YYYY-MM-DD or ISO 8601){hint}")
+            if k in SINGLE_TEXT and isinstance(x, list):
+                err(p, "must be ONE {en, zh} text, not a list — join the parts into one sentence")
+            check_formats(x, p)
+    elif isinstance(v, list):
+        for i, x in enumerate(v): check_formats(x, f"{path}[{i}]")
+
 def need(obj, path, fields):
     for f, kind in fields:
         v = obj.get(f)
@@ -249,6 +270,7 @@ def main():
     for path in files:
         try: d = json.load(open(path))
         except Exception as e: err(path, f"not valid JSON: {e}"); continue
+        check_formats(d, "")
         if kind == "brief":
             ids = validate_brief(d, path)
         elif kind in ("research", "data"):
