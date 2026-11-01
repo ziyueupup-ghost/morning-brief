@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>晨报 Morning Brief</title>
+<meta name="description" content="晨报 Morning Brief 网页版：在任何设备上阅读你的晨报。">
+<meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1c1b19" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="晨报">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data: blob:; connect-src 'self' https://api.github.com; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar" aria-label="导航"></aside>
+  <div id="scrim" hidden></div>
+  <div id="main">
+    <header id="topbar">
+      <button id="menu-btn" class="icon-btn" aria-label="菜单">☰</button>
+      <div id="topbar-title"></div>
+      <div id="topbar-actions"></div>
+    </header>
+    <main id="view" tabindex="-1"></main>
+  </div>
+</div>
+<div id="toolbar" class="sel-toolbar" hidden></div>
+<div id="popover" class="popover" hidden></div>
+<div id="sheet-wrap" hidden><div id="sheet" role="dialog" aria-modal="true"></div></div>
+<div id="toast" hidden></div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
