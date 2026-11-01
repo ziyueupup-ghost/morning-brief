@@ -45,7 +45,7 @@ Use `$TODAY` for every date in this task (file names, ids, `date`, `created_at`)
 | `concepts` | Ideas / frameworks for `study_angle.theories` (its `label` says what they are called, e.g. "Theories" or "Concepts"). |
 | `sections` | Which sections the app shows. When `academic` is `false`, leave `academic_watch` empty and don't research academic events. When `followups` is `false`, leave `followups` empty. When `data` is `false`, skip Data Watch. When `focus` is `false` or there is no `focus`, skip the focus column. When `learning` is `false`, leave out `learning`. |
 | `focus` | The reader's personal column(s). Either one object or a **list of columns**, each with `id`, `title`, `subtitle` (what it tracks), `term_groups` (keywords: an item belongs when it matches a term from each group) and optional `themes` (`id` + `label`, used as theme tags). Give these topics priority everywhere; research each column separately. |
-| `feeds` | RSS / Atom feeds to scan (`kind: "pubmed"` → the `url` is a PubMed query). |
+| `feeds` | Sources to scan. `kind: "rss"` (default): a feed URL. `kind: "pubmed"`: `url` is a PubMed query. `kind: "crossref"`: `url` is a journal ISSN, or `member:<id>` for a publisher (e.g. `member:301` = Taylor & Francis) with `query` = keyword groups. Sources with `category: "journal"` are the reader's literature sources — check every one. |
 | `live_terms` | Words that make a general news item relevant. |
 
 If `profile.json` is missing or invalid, stop and say so — don't guess the reader's interests.
@@ -72,6 +72,11 @@ Time zone: if the reader's `profile.json` has a `time_zone` (e.g. "America/Los_A
 
 1. Fetch every feed in `profile.json → feeds` with `curl -sL -A "Mozilla/5.0"`. For `kind: "pubmed"`, query PubMed
    E-utilities (`esearch.fcgi?db=pubmed&sort=pub_date&retmax=25&term=<url>` then `esummary.fcgi`).
+   For `kind: "crossref"` use the free Crossref API (no key): a journal (`url` = ISSN) →
+   `https://api.crossref.org/journals/<ISSN>/works?sort=published&order=desc&rows=20`; a publisher (`url` = `member:<id>`) →
+   `https://api.crossref.org/members/<id>/works?query.bibliographic=<all query words>&filter=type:journal-article,from-pub-date:<120 days ago>&rows=60`,
+   then keep only papers whose title matches every comma-separated group of `query` (alternatives within a group are separated by `/`).
+   Each result has a DOI — open it before writing about the paper, as for any academic item.
    Keep items from the last 48 hours (journals and research: last 30 days) that fit the profile.
 2. Search the web for the last 24–48 hours (use extended search for niche topics):
    - The profile's `categories`, in the order of its `scopes`.
