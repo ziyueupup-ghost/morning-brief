@@ -44,7 +44,7 @@ Use `$TODAY` for every date in this task (file names, ids, `date`, `created_at`)
 | `categories` | The category tags to use on items (`categories` on stories, `category` on quick scan). Add a new one only when nothing fits. |
 | `concepts` | Ideas / frameworks for `study_angle.theories` (its `label` says what they are called, e.g. "Theories" or "Concepts"). |
 | `sections` | Which sections the app shows. When `academic` is `false`, leave `academic_watch` empty and don't research academic events. When `followups` is `false`, leave `followups` empty. When `data` is `false`, skip Data Watch. When `focus` is `false` or there is no `focus`, skip the focus column. When `learning` is `false`, leave out `learning`. |
-| `focus` | The reader's personal column(s). Either one object or a **list of columns**, each with `id`, `title`, `subtitle` (what it tracks), `term_groups` (keywords: an item belongs when it matches a term from each group) and optional `themes` (`id` + `label`, used as theme tags). Give these topics priority everywhere; research each column separately. |
+| `focus` | The reader's personal column(s). Either one object or a **list of columns**, each with `id`, `title`, `subtitle` (what it tracks), `term_groups` (keywords: an item belongs when it matches a term from each group) and optional `themes` (`id` + `label`, used as theme tags). Give these topics priority everywhere; research each column separately. **Exception:** a column with `own_column_only: true` (e.g. a hobby or a local-life column) appears only in its own column file — research it for `research/focus-<id>-…` alone, and never let it shape story choice or priority, never put its topic in `executive_brief`, `top_stories`, `followups`, `quick_scan`, `academic_watch`, `editor_analysis` or `learning`. |
 | `feeds` | Sources to scan. `kind: "rss"` (default): a feed URL. `kind: "pubmed"`: `url` is a PubMed query. `kind: "crossref"`: `url` is a journal ISSN, or `member:<id>` for a publisher (e.g. `member:301` = Taylor & Francis) with `query` = keyword groups. Sources with `category: "journal"` are the reader's literature sources — check every one. |
 | `live_terms` | Words that make a general news item relevant. |
 
@@ -97,7 +97,7 @@ Root fields: `schema_version: 2`, `date` ("YYYY-MM-DD"), `edition` (e.g. {"en":"
 
 Size: **3–5 top stories** (depth beats count), 0–3 follow-ups, 2–5 academic items (0 when academic is off), 4–8 quick scan.
 Quality over quantity. At least **one item from outside the first scope** and, whenever anything exists,
-**one item for each focus column**.
+**one item for each focus column** (except columns with `own_column_only: true`, which stay in their own column).
 
 ### Every text field is bilingual
 `{"en": "...", "zh": "..."}` — natural Simplified Chinese, not word-for-word. Keep each sentence short;

@@ -73,6 +73,7 @@
 - `color`：orange、indigo、teal、pink、green、blue、purple、red，或 `#RRGGBB`。
 - `icon`：Mac 的 SF Symbols 图标名，例如 `cart`、`chart.line.uptrend.xyaxis`、`book`。
 - `themes`：专栏顶部的主题卡片（每张显示条目数）。不写就不显示卡片。
+- `own_column_only: true`：这个专栏的内容只出现在它自己的专栏里，不进晨报正文，也不影响晨报选题（适合兴趣、本地生活之类和主题无关的专栏）。
 - 原来只写一个 `focus` 对象也照样能用，不用改。
 - 在 App 的「设置 ▸ 主题」里可以给专栏排序、隐藏某个专栏，以及修改每个专栏的关键词。
 
